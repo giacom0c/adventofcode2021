@@ -18,3 +18,14 @@ Task molto base, per entrambe le parti è sufficiente ciclare la lista dei valor
 Altro task piuttosto semplice, pure più di quello del primo giorno a mio parere. Anche qui è sufficiente leggere il file riga per riga e incrementare dei contatori in base ai valori letti, con un normale flusso `if .. elseif .. else`. I commenti di `parte2.ps1` non sono inclusi perché fondamentalmente identici a quelli di `parte1.ps1`.
 
 ---
+
+## Giorno 3 PowerShell / Python
+[Testo originale](https://adventofcode.com/2021/day/3)
+
+Prima parte più facile, seconda un minimo complessa, tanto da dover sfoderare il Python :smirk:
+
+Per la prima parte, è sufficiente sommare i vari numeri colonna per colonna. Alla fine, se il numero di ogni colonna è maggiore alla metà delle righe del file di input, quella colonna varra 1, altrimenti 0. A questo punto si convertono i binari ottenuti in questo modo in base 10 e si moltiplicano fra loro per il risultato finale.
+
+Parte 2: Writeup in arrivo...
+
+---
