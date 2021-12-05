@@ -26,6 +26,34 @@ Prima parte più facile, seconda un minimo complessa, tanto da dover sfoderare i
 
 Per la prima parte, è sufficiente sommare i vari numeri colonna per colonna. Alla fine, se il numero di ogni colonna è maggiore alla metà delle righe del file di input, quella colonna varra 1, altrimenti 0. A questo punto si convertono i binari ottenuti in questo modo in base 10 e si moltiplicano fra loro per il risultato finale.
 
-Parte 2: Writeup in arrivo...
+Parte 2: Il task si risolve facilmente con una funzione ricorsiva. Considerando che non sono ancora molto capace col PowerShell in questi termini, l'ho implementata in Python. Magari prossimamente potrei fare una "traduzione" (oppure fatemi una merge request col vostro codice :grin:).
+Tornando a noi: la logica "a eliminazione" ben si presta alla ricorsione. Ho strutturato la funzione nel seguente modo:
+- La lista dei numeri binari ne contiene uno solo? Ok, allora ho trovato la risposta e la ritorno.
+- Ce ne sono due o più? Controllo la *n-sima* cifra binaria (partendo da sinistra) e divido in due liste i numeri che hanno lo 0 o l'1.
+    - A seconda del tipo di valore che sto cercando, richiamo la mia funzione passando la lista dei valori più (o meno) frequenti e *n+1*.
+    - Ripetere i passi sopra.
+---
+
+## Giorno 4 Python
+[Testo originale](https://adventofcode.com/2021/day/3)
+
+La sfida di oggi richiede di gestire un bingo! Concettualmente molto semplice da capire, il problema sta nell'implementazione del tutto.
+
+Come struttura dati per la gestione delle varie cartelle ho usato una lista di liste di liste:
+- Lista "esterna": contenitore delle cartella. Il file di input contiene 1000 cartelle.
+- Lista "cartella": rappresenta la singola cartella. Ognuna ha 5 righe all'interno
+- Lista "riga": indica una singola riga di una cartella. Contiene 5 diversi numeri.
+
+Per segnarmi i numeri estratti, ho utilizzato una funzione ricorsiva. [Fonte stackoverflow](https://stackoverflow.com/a/24516475/9851915)
+
+Di per sé la funzione non ritorna nulla, ma applica una sostituzione *in place* del numero estratto con una *X*.
+
+Il controllo della cartella vincente viene applicato semplicemente controllando le righe (se non ho trovato nulla anche le colonne) di tutte le cartelle. Trovata la vincente la ritorno e procedo a fare la somma dei numeri non estratti (in pratica i valori diversi da *X*), moltiplicando questo valore per l'ultimo numero estratto. Fun fact: questo è l'unico momento in cui converto i valori da stringa a numero intero.
+
+La parte 2 della challenge ci chiede invece di trovare L'ULTIMA cartella vincente!
+
+Quasi tutta la logica non cambia, l'unica cosa da tener conto è non ritornare subito la cartella vincente, bensì salvarsela (la rimuovo però dalla lista generale delle cartelle, ormai ha vinto e quindi non devo controllarla successivamente) e aggiornarla ogniqualvolta che esce un nuovo numero in caso di bingo. L'ultima rimasta sarà quella corretta.
 
 ---
+
+**TODO**: Indice
