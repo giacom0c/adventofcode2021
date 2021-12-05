@@ -15,7 +15,7 @@ def getCartelle(filename):
             if ',' in line:
                 tabellone = line.strip('\n').split(',')
             else:
-                # Controllo se la riga non è vuota: 
+                # Controllo se la riga inizia con un numero seguito da uno spazio: 
                 # in questo caso significa che sto costruendo una cartella riga per riga
                 if re.search("\d ", line) is not None:
                     cartella.append(line.strip('\n').split())
@@ -68,7 +68,6 @@ def parte2(tabellone, cartelle):
         segnoNum(cartelle, num, 'X')        
         for c in cartelle:
             bingo_orizzontale = False
-            print('sono in cart')
             for l in c:
                 if l == bingo:
                     # Mi segno l'attuale cartella vincente e il relativo numero
