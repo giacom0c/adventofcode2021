@@ -56,4 +56,22 @@ Quasi tutta la logica non cambia, l'unica cosa da tener conto è non ritornare s
 
 ---
 
+## Giorno 5 WIP
+[Testo originale](https://adventofcode.com/2021/day/5)
+
+:construction_worker: :construction_worker: :construction_worker:
+
+---
+
+## Giorno 6 PowerShell
+[Testo originale](https://adventofcode.com/2021/day/6)
+
+Il task di oggi richiede di gestire la crescita di una popolazione di pesci su un certo periodo. Il testo è molto chiaro, ma facendo runnare lo script base (quello che ho chiamato `lento.ps1`) ci accorgiamo presto che non è così facile come sembrava.
+
+I pesci infatti si riproducono piuttosto velocemente, andando a occupare molto spazio nell'array dedicato al loro tracciamento. Tutto ciò si traduce in una enorme lentezza, in quanto avviene una crescita di spazio a livello pseudo-esponenziale. Facendo un conto a spanne, **ogni 9 giorni la popolazione di pesci raddoppia**. Tenendo questo a mente, la prima implementazione *naive* impiega circa 2 ore per simulare 80 giorni! Per i 256 giorni richiesti dalla seconda parte credo che serva un tempo immane, per cui occorre affrontare il problema in modo diverso.
+
+È davvero necessario tenere a mente lo stato di ogni singolo pesce, andando quindi ad allungare in modo indefinito il nostro array? In realtà, pensandoci bene, se nel giorno *X* ho 3 pesci con timer 4, al giorno *X+1*, avrò 3 pesci con timer 3, quindi possiamo usare come struttura dati di appoggio un semplice array con 9 slot, una per ogni possibile timer. Ogni giorno andiamo a contare i pesci attuali, e useremo quello come base per il giorno seguente. Per una corretta risoluzione, è importante aggiornare nel modo giusto le posizioni 6 e 8 del nostro array contatore, rispettivamente i pesci vecchi "rigenerati" e i pesci nuovi.
+
+---
+
 **TODO**: Indice
