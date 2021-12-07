@@ -74,4 +74,17 @@ I pesci infatti si riproducono piuttosto velocemente, andando a occupare molto s
 
 ---
 
+## Giorno 6 PowerShell
+[Testo originale](https://adventofcode.com/2021/day/7)
+
+L'enigma di oggi è abbastanza particolare, ma in soldoni si tratta di un **problema di ottimizzazione**: data una serie di numeri in input, bisogna manipolarli affiché si ottenga una somma più bassa possibile. Precisamente l'esercizio ci richiede di renderli tutti uguali fra loro, quindi vanno incrementati o decrementati, a seconda che siano rispettivamente minori o maggiori del numero target da raggiungere.
+
+La mia soluzione utilizza un approccio *bruteforce*, probabilmente non la soluzione più elegante, ma è la prima che mi è venuta in mente e, provandola, ho visto che ha funzionato. :grin:
+
+La complessità in tempo dell'algoritmo usato = *O(M\*N) + N*, dove *M* è uguale al numero più grande fra quelli nella lista in input e *N* è la lunghezza della lista in input.
+
+Per quanto riguarda la parte 2, il procedimento è fondamentalmente identico, cambia solo come viene contato il raggiungimento del numero target, che diventa una somma (o differenza) incrementale. Per calcolare il nuovo valore, si può usare la [famosa formula di Gauss.](https://it.wikipedia.org/wiki/1_%2B_2_%2B_3_%2B_4_%2B_%C2%B7_%C2%B7_%C2%B7)
+
+---
+
 **TODO**: Indice
