@@ -56,10 +56,16 @@ Quasi tutta la logica non cambia, l'unica cosa da tener conto è non ritornare s
 
 ---
 
-## Giorno 5 WIP
+## Giorno 5 Python
 [Testo originale](https://adventofcode.com/2021/day/5)
 
-:construction_worker: :construction_worker: :construction_worker:
+Per il momento questo è stato il problema che ho trovato più complesso, tant'è che l'ho risolto solo al giorno 8 (e solo nella prima parte, per ora :confused:). La consegna di chiede di lavorare con una sorta di piano cartesiano e di tracciarvi vari segmenti: lo scopo di tutto ciò è scoprire i punti di intersezione di 2 o più segmenti e contarli andandoli a sommare tutti.
+
+Concettualmente è piuttosto chiaro, ciò che mi sfuggiva era come rappresentare questa mappa. Ho pensato a matrici, strutture con *numpy*, ecc. Dopo qualche ricerca, ho scoperto il *defaultdict*, che ci permette di avere una struttura nativamente inizializzata con degli 0 e soprattutto flessibile, in modo da non doverci andare a cercare il numero *M* (max) per costruire staticamente una griglia *M\*M*.
+
+Parsiamo ogni riga del file di input in modo da avere 4 coordinate per ogni riga: 2 per l'ascissa e 2 per l'ordinata, in pratica abbiamo così ottenuto due punti: inizio e fine del segmento da tracciare. La parte 1 dell'esercizio prevede **solo segmenti vertiicali od orizzontali** (quindi con stessi *x* o *y*).
+
+Parte 2 :construction_worker: :construction_worker: :construction_worker:
 
 ---
 
@@ -74,12 +80,12 @@ I pesci infatti si riproducono piuttosto velocemente, andando a occupare molto s
 
 ---
 
-## Giorno 6 PowerShell
+## Giorno 7 PowerShell
 [Testo originale](https://adventofcode.com/2021/day/7)
 
 L'enigma di oggi è abbastanza particolare, ma in soldoni si tratta di un **problema di ottimizzazione**: data una serie di numeri in input, bisogna manipolarli affiché si ottenga una somma più bassa possibile. Precisamente l'esercizio ci richiede di renderli tutti uguali fra loro, quindi vanno incrementati o decrementati, a seconda che siano rispettivamente minori o maggiori del numero target da raggiungere.
 
-La mia soluzione utilizza un approccio *bruteforce*, probabilmente non la soluzione più elegante, ma è la prima che mi è venuta in mente e, provandola, ho visto che ha funzionato. :grin:
+La mia soluzione utilizza un approccio *bruteforce*, probabilmente non la soluzione più elegante o rapida, ma è la prima che mi è venuta in mente e, provandola, ho visto che ha funzionato. :grin:
 
 La complessità in tempo dell'algoritmo usato = *O(M\*N) + N*, dove *M* è uguale al numero più grande fra quelli nella lista in input e *N* è la lunghezza della lista in input.
 
