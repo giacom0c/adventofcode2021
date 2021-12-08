@@ -93,4 +93,13 @@ Per quanto riguarda la parte 2, il procedimento è fondamentalmente identico, ca
 
 ---
 
+## Giorno 8 Python
+[Testo originale](https://adventofcode.com/2021/day/8)
+
+Parte 1: completa (Writuppino in arrivo)
+
+Parte 2 :construction_worker: :construction_worker: :construction_worker:
+
+---
+
 **TODO**: Indice

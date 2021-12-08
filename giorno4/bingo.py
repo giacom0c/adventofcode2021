@@ -5,7 +5,7 @@ bingo = ['X', 'X', 'X', 'X', 'X']
 
 # Funzione per parsare il file di input: 
 # restituisce la lista di numeri estratti dal tabellone del bingo e la lista delle cartelle
-def getCartelle(filename):
+def get_cartelle(filename):
     tabellone = ''
     cartelle = []
     cartella = []
@@ -33,10 +33,10 @@ def getCartelle(filename):
 
 # Questa funzione ricorsiva prende in input la lista delle cartelle, il numero estratto, e un valore per segnare il numero uscito
 # Non resituisce output, modifica però ogni occorrenza del numero estratto con il valore per segnare
-def segnoNum(cartelle, num, segno):
+def segno_num(cartelle, num, segno):
     for index, item in enumerate(cartelle):
         if type(item) == list:
-            segnoNum(item, num, segno)
+            segno_num(item, num, segno)
         else:
             if item == num:
                 cartelle[index] = segno
@@ -46,7 +46,7 @@ def segnoNum(cartelle, num, segno):
 # Ritorno la cartella vincente e l'ultimo numero estratto
 def parte1(tabellone, cartelle):
     for num in tabellone:
-        segnoNum(cartelle, num, 'X')
+        segno_num(cartelle, num, 'X')
         for c in cartelle:
             # Scorro le righe per controllare bingo in orizzontale
             for l in c:
@@ -65,7 +65,7 @@ def parte2(tabellone, cartelle):
     ultimo_vincitore = []
     ultimo_num = ''
     for num in tabellone:
-        segnoNum(cartelle, num, 'X')        
+        segno_num(cartelle, num, 'X')        
         for c in cartelle:
             bingo_orizzontale = False
             for l in c:
@@ -93,7 +93,7 @@ def parte2(tabellone, cartelle):
     return None, 'Nessun vincitore'
     
 
-tabellone, cartelle = getCartelle('input.txt')
+tabellone, cartelle = get_cartelle('input.txt')
 #vincitore, num = parte1(tabellone, cartelle)
 vincitore, num = parte2(tabellone, cartelle)
 # Se ho trovato un vincente (primo o ultimo che sia), calcolo il prodotto richiesto
@@ -104,3 +104,5 @@ if type(vincitore) == list:
             if n != 'X':
                 somma_non_segnati += int(n)
     print(somma_non_segnati * int(num))
+else:
+    print('Nessun vincitore trovato.')
