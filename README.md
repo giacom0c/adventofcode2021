@@ -96,7 +96,28 @@ Per quanto riguarda la parte 2, il procedimento è fondamentalmente identico, ca
 ## Giorno 8 Python
 [Testo originale](https://adventofcode.com/2021/day/8)
 
-Parte 1: completa (Writuppino in arrivo)
+La challenge di oggi sembra quasi uscita dalla settimana enigmistica! Lo scopo è quello di decifrare dei pattern per ricostruire dei numeri nel formato degli [orologi digitali](https://it.wikipedia.org/wiki/Display_a_sette_segmenti).
+
+La prima parte è molto facile: si focalizza sulle cifre 1, 4, 7 e 8, che si differenziano rispetto alle altre perché rappresentabili con un numero univoco di segmenti digitali, rispettivamente 2, 4, 3, 7. Gli altri sei numeri usano 5 o 6 segmenti. Per trovare la soluzione è sufficiente quindi contare la lunghezza dei codici nella parte destra dell'input e contare le occorrenze di questi quattro numeri.
+
+La seconda parte è decisamente più complessa, perché ci richiede di decodificare completamente ogni riga del file di input: la parte sinistra conterrà le 10 cifre in formato digitale, mentre la parte destra ne contiene quattro e bisogna decifrare di quale numero si tratta, una volta trovato il primo, ripetere il procedimento per ogni riga dele file di input e sommare fra loro tutti i valori ottenuti.
+
+Abbiamo detto che le cifre 1, 4, 7 e 8 ci vengono date "gratis", basta contare la lunghezza del pattern. Come fare per gli altri 6 numeri?
+- Se è lungo 6 caratteri e il pattern di 1 *non* è incluso, allora corrisponde sicuramente alla cifra 6.
+- Se è lungo 6 caratteri (e non è 6) e il pattern di 4 *non* è incluso, allora corrisponde sicuramente alla cifra 0.
+- Se è lungo 6 caratteri ma non è né 0 né 6, allora è la cifra 9.
+- Se è lungo 5 caratteri e il pattern di 7 è incluso, allora è sicuramente la cifra 3.
+- Se è lungo 5 caratteri (e non è 3) e differisce di un unico carattere rispetto al pattern di 6, allora è la cifra 2
+- Se è lungo 5 caratteri ma non è né 2 né 3, allora è la cifra 5.
+
+Una volta stabiliti questi vincoli il gioco è fatto! :wink:
+
+---
+
+## Giorno 9 Python
+[Testo originale](https://adventofcode.com/2021/day/8)
+
+L'esericizio di oggi prevede di **individuare dei minimi locali in una mappa 2D**. In pratica bisogna confrontare il valore di ogni "cella" con quello dei suoi 4 adiacenti. L'unica complicazione sta nel fatto che le celle agli angoli e sui bordi hanno rispettivamente 2 e 3 vicini. La soluzione da me applicata è abbastanza brutale: per modellare la mappa 2D ho usato una lista di liste, dove la lista interna corrisponde a una riga del file di input. Per **ogni** valore controllo i suoi 4 vicini, se sono uscito dai limiti di una delle liste (quindi fuori dal perimetro della mappa), sollevo un'eccezione e semplicemente non faccio nulla, altrimenti mi segno il valore della cella adiacente presa in esame. Una volta trovati tutti i vicini, confronto il minore di essi con il valore corrente, se quest'ultimo è minore allora me lo segno. Il valore da ritornare come soluzione corrisponde alla somma di questi minimi più 1.
 
 Parte 2 :construction_worker: :construction_worker: :construction_worker:
 
