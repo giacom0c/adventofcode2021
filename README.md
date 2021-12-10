@@ -115,11 +115,18 @@ Una volta stabiliti questi vincoli il gioco è fatto! :wink:
 ---
 
 ## Giorno 9 Python
-[Testo originale](https://adventofcode.com/2021/day/8)
+[Testo originale](https://adventofcode.com/2021/day/9)
 
 L'esericizio di oggi prevede di **individuare dei minimi locali in una mappa 2D**. In pratica bisogna confrontare il valore di ogni "cella" con quello dei suoi 4 adiacenti. L'unica complicazione sta nel fatto che le celle agli angoli e sui bordi hanno rispettivamente 2 e 3 vicini. La soluzione da me applicata è abbastanza brutale: per modellare la mappa 2D ho usato una lista di liste, dove la lista interna corrisponde a una riga del file di input. Per **ogni** valore controllo i suoi 4 vicini, se sono uscito dai limiti di una delle liste (quindi fuori dal perimetro della mappa), sollevo un'eccezione e semplicemente non faccio nulla, altrimenti mi segno il valore della cella adiacente presa in esame. Una volta trovati tutti i vicini, confronto il minore di essi con il valore corrente, se quest'ultimo è minore allora me lo segno. Il valore da ritornare come soluzione corrisponde alla somma di questi minimi più 1.
 
 Parte 2 :construction_worker: :construction_worker: :construction_worker:
+
+---
+
+## Giorno 10 Python
+[Testo originale](https://adventofcode.com/2021/day/10)
+
+Writuppino in arrivo...
 
 ---
 
