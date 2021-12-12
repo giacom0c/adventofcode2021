@@ -117,16 +117,35 @@ Una volta stabiliti questi vincoli il gioco è fatto! :wink:
 ## Giorno 9 Python
 [Testo originale](https://adventofcode.com/2021/day/9)
 
-L'esericizio di oggi prevede di **individuare dei minimi locali in una mappa 2D**. In pratica bisogna confrontare il valore di ogni "cella" con quello dei suoi 4 adiacenti. L'unica complicazione sta nel fatto che le celle agli angoli e sui bordi hanno rispettivamente 2 e 3 vicini. La soluzione da me applicata è abbastanza brutale: per modellare la mappa 2D ho usato una lista di liste, dove la lista interna corrisponde a una riga del file di input. Per **ogni** valore controllo i suoi 4 vicini, se sono uscito dai limiti di una delle liste (quindi fuori dal perimetro della mappa), sollevo un'eccezione e semplicemente non faccio nulla, altrimenti mi segno il valore della cella adiacente presa in esame. Una volta trovati tutti i vicini, confronto il minore di essi con il valore corrente, se quest'ultimo è minore allora me lo segno. Il valore da ritornare come soluzione corrisponde alla somma di questi minimi più 1.
+L'esericizio di oggi prevede di **individuare dei minimi locali in una mappa 2D**. In pratica bisogna confrontare il valore di ogni "cella" con quello dei suoi 4 adiacenti. L'unica complicazione sta nel fatto che le celle agli angoli e sui bordi hanno rispettivamente 2 e 3 vicini.
 
-Parte 2 :construction_worker: :construction_worker: :construction_worker:
+La soluzione da me applicata è abbastanza brutale: per modellare la mappa 2D ho usato una lista di liste, dove la lista interna corrisponde a una riga del file di input. Per **ogni** valore controllo i suoi 4 vicini, se sono uscito dai limiti di una delle liste (quindi fuori dal perimetro della mappa), sollevo un'eccezione e semplicemente non faccio nulla, altrimenti mi segno il valore della cella adiacente presa in esame. Una volta trovati tutti i vicini, confronto il minore di essi con il valore corrente, se quest'ultimo è minore allora me lo segno. Il valore da ritornare come soluzione corrisponde alla somma di questi minimi più 1.
+
+La seconda parte ci richiede di individuare delle aree contenenti numeri minori di 9. L'idea quindi è quella di trovare tutti i valori adiacenti validi dei vari numeri, e costruire quindi dei bacini. C'è un algoritmo che fa proprio al caso nostro, [si chiama flood fill](https://python.plainenglish.io/a-python-example-of-the-flood-fill-algorithm-bced7f96f569), ed è quello usato dal tool di paint che riempie un area con lo stesso colore (icona del secchiello). Tramite la ricorsione esploro la mappa e mi segno la dimensione dei vari bacini trovati. A questo punto per la soluzione ci richiedono di restituire il prodotto dei 3 bacini con dimensione maggiore.
 
 ---
 
 ## Giorno 10 Python
 [Testo originale](https://adventofcode.com/2021/day/10)
 
-Writuppino in arrivo...
+Oggi bisogna parsare una **serie di parentesi**! Nel file di input ci vengono date delle sequenze di tutti i tipi di parentesi `<>()[]{}` e dobbiamo stabilirne due tipologie differenti:
+
+- Quelle *corrotte*, ovvero sequenze dove c'è una mancata corrispondenza fra una parentesi aperta e una chiusa, per esempio apro la tonda ma la chiudo con la quadra.
+- Quelle *incomplete*, qui non ci sono mismatch fra parentesi, bensì la sequenza termina senza che una o più parentesi venga chiusa correttamente.
+Nel testo troviamo vari esempi di questi scenari possibili.
+
+La soluzione sia per la parte 1 che 2 prevede l'uso di una pila (`deque` in python), dove vi andiamo a inserire tutte le parentesi aperte, poi quando incontriamo una chiusa la confrontiamo con il primo elemento della pila (che ha natura LIFO, *last in, first out*): se è la parentesi corrispondente le togliamo dalla pila, altrimenti abbiamo già trovato la corruzione della riga. Se arrivo fino in fondo senza trovare mismatch, allora è una sequenza incompleta (nel testo è specificato che sono incomplete o corrotte).
+
+La parte 2 ci chiede di completare appunto queste sequenze. Anche qui è semplice, invertiamo la nostra pila e fondamentalmente abbiamo ottenuto il risultato richiesto.
+
+---
+
+## Giorno 11 Python
+[Testo originale](https://adventofcode.com/2021/day/11)
+
+Questo esercizio è concettualmente **molto simile a quello affrontato nel giorno 9**. Anche qui abbiamo una mappa 2D che ci richiede di interagire con le sue "celle" e relativi vicini. In questo caso però nei vicini si includono anche quelli in diagonale. Per la risoluzione viene usato un algoritmo praticamente uguale al flood fill.
+
+Per la parte 2 è sufficiente ripetere il ciclo fino a quando tutti gli elementi della mappa vengono attivati con il "flash". Attenzione a non usare la stessa mappa della parte 2, perché si trova in uno stato avanzato, va rigenerato.
 
 ---
 

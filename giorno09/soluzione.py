@@ -1,6 +1,8 @@
 from math import prod
+# product ci permette di "appiattire" i doppi cicli for
 from itertools import product
 
+# Costruisco la mappa leggendo il file di input
 def get_mappa(filename):
     mappa = []
     with open(filename, 'r') as file:
@@ -22,16 +24,14 @@ def flood_fill(mappa, x ,y):
         return
     # secondly, check if the current position equals the old value
     if mappa[x][y] == 9 or mappa[x][y] == -1:
-        return
-    
+        return    
     # thirdly, set the current position to the new value
-    mappa[x][y] = -1
-    
+    mappa[x][y] = -1    
     # fourthly, attempt to fill the neighboring positions
-    flood_fill(mappa, x+1, y)
-    flood_fill(mappa, x-1, y)
-    flood_fill(mappa, x, y+1)
-    flood_fill(mappa, x, y-1)
+    flood_fill(mappa, x + 1, y)
+    flood_fill(mappa, x - 1, y)
+    flood_fill(mappa, x, y + 1)
+    flood_fill(mappa, x, y - 1)
 
 
 def parte1(mappa):    
@@ -61,18 +61,21 @@ def parte1(mappa):
 
 def parte2(mappa):
     bacini = []
+    # Applico la funzione ricorsiva a ogni elemento della mappa
     for i, j in product(range(len(mappa)), range(len(mappa[0]))):
         flood_fill(mappa, i, j)
-        #print(mappa)
         totale = 0
+        # Dopo ogni "passata", scorro la mappa per vedere la grandezza del bacino creato
         for x, y in product(range(len(mappa)), range(len(mappa[0]))):
             if mappa[x][y] == -1:
                 totale += 1
+                # Reinizializzo il valore dell'elemento a 9:
+                # Ogni elemento si trova in un solo e unico bacino, in questo modo non viene considerato per le iterazioni successive
                 mappa[x][y] = 9
         if totale > 0:
             bacini.append(totale)
+    # Do in output il prodotto dei 3 bacini più grandi
     bacini.sort()
-    #print(bacini)
     print(prod(bacini[-3:]))
 
 
