@@ -32,13 +32,22 @@ def parte1(coordinate, x_max, y_max, mosse):
             else:
                 temp.append('.')
         foglio.append(temp)
-    mossa = mosse[0]
-    fold = mossa[1]
-    for j in range(1, fold + 1):
-        for i in range(x_max + 1):
-            if foglio[-j][i] == '#':
-                foglio[j - 1][i] = '#'
-        print(foglio[j - 1])
+    for idx, m in enumerate(mosse):
+        print('Piega numero: ' + str(idx))
+        if m[0] == 'y':
+            y_max = m[1]
+            for j in range(1, y_max + 1):
+                for i in range(x_max + 1):
+                    if foglio[-j][i] == '#':
+                        foglio[j - 1][i] = '#'
+                print(foglio[j - 1])
+        else:
+            x_max = m[1]
+            for j in range(y_max + 1):
+                for i in range(1, x_max + 1):
+                    if foglio[j][-i] == '#':
+                        foglio[j][i - 1] = '#'
+                print(foglio[j][:x_max])
     conta = 0
     for j in range(fold + 1):
         for i in range(x_max + 1):
